@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subsistema de Clientes - Minimalista</title>
+    <link rel="stylesheet" href="css/styles.css"> <!-- Enlace al archivo CSS externo -->
+</head>
+<body>
+    <ul>
+        <li><a href="./../index.html">[Principal]</a></li>
+    </ul>
+    <h2>Subsistema de Pedidos</h2>
+    <p>El subsistema de pedidos se encarga de la creación, seguimiento y gestión de los pedidos realizados por los clientes. 
+       Permite registrar cotizaciones, confirmar pedidos y monitorear el estado de cada solicitud hasta su entrega.</p>
+
+    <h3>Usuarios del subsistema</h3>
+    <ul>
+        <li>Cliente</li>
+        <li>Dueña</li>
+    </ul>
+    
+    <h3>Requerimientos por usuario</h3>
+    
+    <p>El cliente debe ser capaz de:</p>
+    <ul>
+        <li>Visualizar el catálogo.</li>
+        <li>Filtrar catálogo por:
+            <ul>
+                <li>Precio</li>
+                <li>Tema</li>
+                <li>Popularidad</li>
+            </ul>
+        </li>
+        <li>Elaborar/Diseñar su propio ramo:
+            <ul>
+                <li>Agregar tipo de flor</li>
+                <li>Unidades de flores</li>
+                <li>Quitar tipo de flor</li>
+                <li>Editar números de flores</li>
+                <li>Ordenar el ramo</li>
+            </ul>
+        </li>
+        <li>Proporcionar información de entrega:
+            <ul>
+                <li>Dirección de entrega</li>
+                <li>Referencia</li>
+                <li>De y Para</li>
+                <li>Teléfono</li>
+                <li>Fecha de entrega</li>
+                <li>Hora</li>
+            </ul>
+        </li>
+        <li>Realizar el pago:
+            <ul>
+                <li>Tarjeta:
+                    <ul>
+                        <li>Número de tarjeta</li>
+                        <li>Cuenta</li>
+                        <li>Fecha</li>
+                        <li>CVV</li>
+                    </ul>
+                </li>
+                <li>Transferencia:
+                    <ul>
+                        <li>Insertar comprobante de pago</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <p>La dueña debe ser capaz de:</p>
+    <ul>
+        <li>Visualizar el resumen de los pedidos.</li>
+        <li>Lista de pedidos actuales:
+            <ul>
+                <li>ID de Pedido: Identificador único de cada pedido.</li>
+                <li>Nombre del Cliente: Nombre del cliente que realizó el pedido.</li>
+                <li>Estado del Pedido: Estado actual (Pendiente, En Proceso, Entregado, Cancelado).</li>
+                <li>Fecha de Pedido: Fecha en que se realizó el pedido.</li>
+                <li>Fecha de Entrega: Fecha programada para la entrega.</li>
+                <li>Total: Monto total del pedido.</li>
+            </ul>
+        </li>
+        <li>Visualizar los detalles específicos del pedido:
+            <ul>
+                <li>Contenido del Ramo:
+                    <ul>
+                        <li>Tipos de flores seleccionadas.</li>
+                        <li>Cantidades de cada tipo de flor.</li>
+                        <li>Personalización (si aplica).</li>
+                    </ul>
+                </li>
+                <li>Datos del Cliente:
+                    <ul>
+                        <li>Nombre completo.</li>
+                        <li>Dirección de entrega.</li>
+                        <li>Teléfono de contacto.</li>
+                        <li>Referencia de entrega (si se proporciona).</li>
+                        <li>Mensaje de "De" y "Para" (si aplica).</li>
+                    </ul>
+                </li>
+                <li>Información de Pago:
+                    <ul>
+                        <li>Método de pago:
+                            <ul>
+                                <li>Tarjeta</li>
+                                <li>Transferencia</li>
+                            </ul>
+                        </li>
+                        <li>Estado del pago:
+                            <ul>
+                                <li>Completo</li>
+                                <li>Pendiente</li>
+                                <li>Fallido</li>
+                            </ul>
+                        </li>
+                        <li>Detalles de la tarjeta (últimos cuatro dígitos) o comprobante de transferencia.</li>
+                    </ul>
+                </li>
+                <li>Gestionar los Pedidos:
+                    <ul>
+                        <li>Opciones de acción:
+                            <ul>
+                                <li>Modificar Estado del Pedido: Cambiar el estado (e.g., a "En Proceso" o "Entregado").</li>
+                                <li>Eliminar Pedido.</li>
+                                <li>Reenviar Confirmación.</li>
+                                <li>Imprimir Detalles del Pedido.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>Responsable del subsistema</h3>
+    <ul>
+        <li>Adriana Aguilar Morales </li>
+    </ul>
+</body>
+</html>
