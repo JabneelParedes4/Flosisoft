@@ -14,41 +14,27 @@
         <img src="../imagenes/Diagrama.jpg" alt="Diagrama">
 
 <h2>Descripción de la Arquitectura de la Base de Datos</h2>
-<p>La base de datos <strong>Florisoft</strong> está diseñada para gestionar la información relacionada con clientes, pagos y reportes de ventas, garantizando la organización y consistencia de los datos. Contiene las siguientes tablas:</p>
+<p>La base de datos del subsistema <strong>Florisoft</strong> gestiona la información de clientes, pagos y reportes de ventas. Contiene las siguientes tablas:</p>
 
-<h4>Clientes:</h4>
-<p>Almacena información sobre los clientes, incluyendo campos como:</p>
-<ul>
-    <li><strong>ClienteID:</strong> Identificador único del cliente.</li>
-    <li><strong>Nombre:</strong> Nombre completo del cliente.</li>
-    <li><strong>Correo:</strong> Dirección de correo electrónico (única).</li>
-    <li><strong>Telefono:</strong> Número de teléfono de contacto.</li>
-    <li><strong>Direccion:</strong> Dirección física del cliente.</li>
-    <li><strong>RFC:</strong> Registro Federal de Contribuyentes.</li>
-    <li><strong>RegimenFiscal:</strong> Tipo de régimen fiscal del cliente.</li>
-</ul>
+<h3>1. Clientes</h3>
+<p>Almacena datos esenciales sobre los clientes, incluyendo campos como nombre, correo electrónico, teléfono, dirección, RFC y régimen fiscal.</p>
 
-<h4>Pagos:</h4>
-<p>Registra los pagos realizados por los clientes, incluyendo:</p>
-<ul>
-    <li><strong>PagoID:</strong> Identificador único del pago.</li>
-    <li><strong>ClienteID:</strong> Identificador del cliente que realiza el pago.</li>
-    <li><strong>MetodoPago:</strong> Método utilizado para el pago.</li>
-    <li><strong>Estado:</strong> Estado del pago (ej. aprobado, pendiente, fallido).</li>
-    <li><strong>FechaPago:</strong> Fecha en que se realizó el pago.</li>
-    <li><strong>Comprobante:</strong> Archivo o referencia del comprobante de pago.</li>
-</ul>
+<h3>2. Pagos</h3>
+<p>Registra los pagos realizados por los clientes. Cada entrada en esta tabla está vinculada a <strong>Clientes</strong> a través de <strong>ClienteID</strong>, e incluye información sobre el método de pago, estado, fecha de pago y comprobante.</p>
 
-<h4>ReportesVentas:</h4>
-<p>Almacena información sobre las ventas realizadas, con campos como:</p>
-<ul>
-    <li><strong>ReporteID:</strong> Identificador único del reporte.</li>
-    <li><strong>Fecha:</strong> Fecha del reporte.</li>
-    <li><strong>Tipo:</strong> Tipo de reporte (ej. diario, semanal, mensual).</li>
-    <li><strong>TotalVentas:</strong> Monto total de las ventas reportadas.</li>
-    <li><strong>CantidadVentas:</strong> Número de transacciones realizadas.</li>
-    <li><strong>ClienteID:</strong> Identificador del cliente relacionado con el reporte.</li>
-</ul>
+<h3>3. ReportesVentas</h3>
+<p>Almacena información sobre las ventas realizadas. Cada registro en esta tabla se relaciona con <strong>Clientes</strong> mediante <strong>ClienteID</strong>, permitiendo un análisis detallado del rendimiento de ventas, incluyendo fecha, tipo de reporte, total de ventas y cantidad de transacciones.</p>
+
+<h2>Relaciones entre las tablas</h2>
+<p>
+    <strong>Clientes a Pagos</strong>: Un cliente puede realizar múltiples pagos. La tabla <strong>Pagos</strong> utiliza <strong>ClienteID</strong> como clave foránea para referirse a <strong>Clientes</strong>.
+</p>
+<p>
+    <strong>Clientes a ReportesVentas</strong>: Cada reporte de ventas está asociado a un cliente específico. La tabla <strong>ReportesVentas</strong> también utiliza <strong>ClienteID</strong> como clave foránea para vincular la información de ventas con los clientes correspondientes.
+</p>
+
+<p>Estas relaciones aseguran que la información sobre clientes, sus pagos y los reportes de ventas estén organizados y sean fácilmente accesibles dentro del sistema.</p>
+
 
 <h2>Normalización de la Base de Datos</h2>
 <p>La base de datos ha sido estructurada de acuerdo con las primeras tres formas normales (1NF, 2NF, 3NF) para asegurar la correcta organización y coherencia de la información:</p>
