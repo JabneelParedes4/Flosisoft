@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arquitectura de la Base de Datos - Florisoft</title>
+    <title>Florisoft</title>
 <body>
         <ul>
             <a href="../Subsistemas/Ventas.html">[Ventas]</a>
         </ul>
-        <img src="imagenes/adri.jpeg" alt="Diagrama">
+        
     
-<h3>Diseño de la Base de Datos del Subsistema de Inventario</h3>
+        <h2>Diseño de la Base de Datos del Subsistema de Ventas</h2>
+        <img src="../imagenes/Diagrama.jpg" alt="Diagrama">
 
-<h3>Descripción de la Arquitectura de la Base de Datos</h3>
+<h2>Descripción de la Arquitectura de la Base de Datos</h2>
 <p>La base de datos <strong>Florisoft</strong> está diseñada para gestionar la información relacionada con clientes, pagos y reportes de ventas, garantizando la organización y consistencia de los datos. Contiene las siguientes tablas:</p>
 
-<h4>Clientes</h4>
+<h4>Clientes:</h4>
 <p>Almacena información sobre los clientes, incluyendo campos como:</p>
 <ul>
     <li><strong>ClienteID:</strong> Identificador único del cliente.</li>
@@ -27,7 +28,7 @@
     <li><strong>RegimenFiscal:</strong> Tipo de régimen fiscal del cliente.</li>
 </ul>
 
-<h4>Pagos</h4>
+<h4>Pagos:</h4>
 <p>Registra los pagos realizados por los clientes, incluyendo:</p>
 <ul>
     <li><strong>PagoID:</strong> Identificador único del pago.</li>
@@ -38,7 +39,7 @@
     <li><strong>Comprobante:</strong> Archivo o referencia del comprobante de pago.</li>
 </ul>
 
-<h4>ReportesVentas</h4>
+<h4>ReportesVentas:</h4>
 <p>Almacena información sobre las ventas realizadas, con campos como:</p>
 <ul>
     <li><strong>ReporteID:</strong> Identificador único del reporte.</li>
@@ -49,17 +50,16 @@
     <li><strong>ClienteID:</strong> Identificador del cliente relacionado con el reporte.</li>
 </ul>
 
-<h3>Normalización de la Base de Datos</h3>
-<p>La base de datos ha sido diseñada siguiendo las primeras tres formas normales (1NF, 2NF, 3NF) para garantizar la organización y consistencia de los datos:</p>
-
+<h2>Normalización de la Base de Datos</h2>
+<p>La base de datos ha sido estructurada de acuerdo con las primeras tres formas normales (1NF, 2NF, 3NF) para asegurar la correcta organización y coherencia de la información:</p>
 <h3>1NF (Primera Forma Normal)</h3>
-<p>Cada tabla tiene una clave primaria única y todas las entradas son atómicas, lo que significa que cada campo contiene un solo valor.</p>
+<p>Cada tabla cuenta con una clave primaria exclusiva y todos los registros son atómicos, lo que implica que cada campo contiene un único valor.</p>
 
 <h3>2NF (Segunda Forma Normal)</h3>
-<p>Se ha eliminado la dependencia parcial de los atributos, asegurando que todos los atributos dependen completamente de la clave primaria.</p>
+<p>Se han eliminado las dependencias parciales, asegurando que todos los atributos dependan completamente de la clave primaria, lo que evita redundancias.</p>
 
 <h3>3NF (Tercera Forma Normal)</h3>
-<p>No hay dependencias transitivas; todos los atributos son dependientes directamente de la clave primaria.</p>
+<p>No hay dependencias transitivas; cada atributo está directamente relacionado con la clave primaria, lo que mejora la integridad de los datos.</p>
 
 <h3>Código SQL para Crear Tablas</h3>
 
@@ -96,7 +96,7 @@ CREATE TABLE ReportesVentas (
 );
 </pre>
 
-<h3>Código SQL para Agregar Registros</h3>
+<h2>Código SQL para Agregar Registros</h2>
 <pre>
 -- Insertar registros en la tabla Clientes
 INSERT INTO Clientes (Nombre, Correo, Telefono, Direccion, RFC, RegimenFiscal)
@@ -140,6 +140,8 @@ VALUES
 (GETDATE(), 'Mensual', 2500.00, 20, 9),
 (GETDATE(), 'Trimestral', 7000.00, 35, 10);
 </pre>
+
+<p>Este documento detalla la estructura de la base de datos de Florisoft y cómo se aplica para asegurar la coherencia y organización de la información.</p>
 
 </body>
 </html>
