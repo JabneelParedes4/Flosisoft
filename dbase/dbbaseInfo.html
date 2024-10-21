@@ -5,16 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arquitectura de la Base de Datos - Florisoft</title>
 <body>
-    <ul>
-        <li><a href="./../ventas.html">[Principal]</a></li>
-    </ul>
+        <ul>
+            <li><a href="./../Ventas.html">[Ventas]</a></li>
+        </ul>
+        <img src="imagenes/adri.jpg" alt="Diagrama">
     
-<h1>Diseño de la Base de Datos del Subsistema de Inventario</h1>
+<h3>Diseño de la Base de Datos del Subsistema de Inventario</h3>
 
-<h1>Descripción de la Arquitectura de la Base de Datos</h1>
+<h3>Descripción de la Arquitectura de la Base de Datos</h3>
 <p>La base de datos <strong>Florisoft</strong> está diseñada para gestionar la información relacionada con clientes, pagos y reportes de ventas, garantizando la organización y consistencia de los datos. Contiene las siguientes tablas:</p>
 
-<h2>Clientes</h2>
+<h4>Clientes</h4>
 <p>Almacena información sobre los clientes, incluyendo campos como:</p>
 <ul>
     <li><strong>ClienteID:</strong> Identificador único del cliente.</li>
@@ -26,7 +27,7 @@
     <li><strong>RegimenFiscal:</strong> Tipo de régimen fiscal del cliente.</li>
 </ul>
 
-<h2>Pagos</h2>
+<h4>Pagos</h4>
 <p>Registra los pagos realizados por los clientes, incluyendo:</p>
 <ul>
     <li><strong>PagoID:</strong> Identificador único del pago.</li>
@@ -37,7 +38,7 @@
     <li><strong>Comprobante:</strong> Archivo o referencia del comprobante de pago.</li>
 </ul>
 
-<h2>ReportesVentas</h2>
+<h4>ReportesVentas</h4>
 <p>Almacena información sobre las ventas realizadas, con campos como:</p>
 <ul>
     <li><strong>ReporteID:</strong> Identificador único del reporte.</li>
@@ -48,19 +49,19 @@
     <li><strong>ClienteID:</strong> Identificador del cliente relacionado con el reporte.</li>
 </ul>
 
-<h1>Normalización de la Base de Datos</h1>
+<h3>Normalización de la Base de Datos</h3>
 <p>La base de datos ha sido diseñada siguiendo las primeras tres formas normales (1NF, 2NF, 3NF) para garantizar la organización y consistencia de los datos:</p>
 
-<h2>1NF (Primera Forma Normal)</h2>
+<h3>1NF (Primera Forma Normal)</h3>
 <p>Cada tabla tiene una clave primaria única y todas las entradas son atómicas, lo que significa que cada campo contiene un solo valor.</p>
 
-<h2>2NF (Segunda Forma Normal)</h2>
+<h3>2NF (Segunda Forma Normal)</h3>
 <p>Se ha eliminado la dependencia parcial de los atributos, asegurando que todos los atributos dependen completamente de la clave primaria.</p>
 
-<h2>3NF (Tercera Forma Normal)</h2>
+<h3>3NF (Tercera Forma Normal)</h3>
 <p>No hay dependencias transitivas; todos los atributos son dependientes directamente de la clave primaria.</p>
 
-<h1>Código SQL para Crear Tablas</h1>
+<h3>Código SQL para Crear Tablas</h3>
 
 <pre>
 -- Crear tabla Clientes
@@ -95,7 +96,7 @@ CREATE TABLE ReportesVentas (
 );
 </pre>
 
-<h1>Código SQL para Agregar Registros</h1>
+<h3>Código SQL para Agregar Registros</h3>
 <pre>
 -- Insertar registros en la tabla Clientes
 INSERT INTO Clientes (Nombre, Correo, Telefono, Direccion, RFC, RegimenFiscal)
