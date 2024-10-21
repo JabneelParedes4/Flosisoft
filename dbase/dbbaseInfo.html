@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arquitectura de la Base de Datos - Florisoft</title>
+<body>
+
+<h1>Arquitectura de la Base de Datos - Florisoft</h1>
+<p>La base de datos <strong>Florisoft</strong> está diseñada para gestionar la información relacionada con clientes, pagos y reportes de ventas, garantizando la organización y consistencia de los datos. Contiene las siguientes tablas:</p>
+
+<h2>Clientes</h2>
+<p>Almacena información sobre los clientes, incluyendo campos como:</p>
+<ul>
+    <li><strong>ClienteID:</strong> Identificador único del cliente.</li>
+    <li><strong>Nombre:</strong> Nombre completo del cliente.</li>
+    <li><strong>Correo:</strong> Dirección de correo electrónico (única).</li>
+    <li><strong>Telefono:</strong> Número de teléfono de contacto.</li>
+    <li><strong>Direccion:</strong> Dirección física del cliente.</li>
+    <li><strong>RFC:</strong> Registro Federal de Contribuyentes.</li>
+    <li><strong>RegimenFiscal:</strong> Tipo de régimen fiscal del cliente.</li>
+</ul>
+
+<h2>Pagos</h2>
+<p>Registra los pagos realizados por los clientes, incluyendo:</p>
+<ul>
+    <li><strong>PagoID:</strong> Identificador único del pago.</li>
+    <li><strong>ClienteID:</strong> Identificador del cliente que realiza el pago.</li>
+    <li><strong>MetodoPago:</strong> Método utilizado para el pago.</li>
+    <li><strong>Estado:</strong> Estado del pago (ej. aprobado, pendiente, fallido).</li>
+    <li><strong>FechaPago:</strong> Fecha en que se realizó el pago.</li>
+    <li><strong>Comprobante:</strong> Archivo o referencia del comprobante de pago.</li>
+</ul>
+
+<h2>ReportesVentas</h2>
+<p>Almacena información sobre las ventas realizadas, con campos como:</p>
+<ul>
+    <li><strong>ReporteID:</strong> Identificador único del reporte.</li>
+    <li><strong>Fecha:</strong> Fecha del reporte.</li>
+    <li><strong>Tipo:</strong> Tipo de reporte (ej. diario, semanal, mensual).</li>
+    <li><strong>TotalVentas:</strong> Monto total de las ventas reportadas.</li>
+    <li><strong>CantidadVentas:</strong> Número de transacciones realizadas.</li>
+    <li><strong>ClienteID:</strong> Identificador del cliente relacionado con el reporte.</li>
+</ul>
+
+<h1>Normalización de la Base de Datos - Florisoft</h1>
+<p>La base de datos ha sido diseñada siguiendo las primeras tres formas normales (1NF, 2NF, 3NF) para garantizar la organización y consistencia de los datos:</p>
+
+<h2>1NF (Primera Forma Normal)</h2>
+<p>Cada tabla tiene una clave primaria única y todas las entradas son atómicas, lo que significa que cada campo contiene un solo valor.</p>
+
+<h2>2NF (Segunda Forma Normal)</h2>
+<p>Se ha eliminado la dependencia parcial de los atributos, asegurando que todos los atributos dependen completamente de la clave primaria.</p>
+
+<h2>3NF (Tercera Forma Normal)</h2>
+<p>No hay dependencias transitivas; todos los atributos son dependientes directamente de la clave primaria.</p>
+
+<h1>Creación de Tablas - Florisoft</h1>
+
+<pre>
+-- Crear tabla Clientes
+CREATE TABLE Clientes (
+    ClienteID INT PRIMARY KEY IDENTITY(1,1),
+    Nombre VARCHAR(100) NOT NULL,
+    Correo VARCHAR(100) NOT NULL UNIQUE,
+    Telefono VARCHAR(15),
+    Direccion VARCHAR(255),
+    RFC VARCHAR(20),
+    RegimenFiscal VARCHAR(50)
+);
+
+-- Crear tabla Pagos
+CREATE TABLE Pagos (
+    PagoID INT PRIMARY KEY IDENTITY(1,1),
+    ClienteID INT FOREIGN KEY REFERENCES Clientes(ClienteID),
+    MetodoPago VARCHAR(50) NOT NULL,
+    Estado VARCHAR(50) NOT NULL,
+    FechaPago DATETIME DEFAULT GETDATE(),
+    Comprobante VARCHAR(255)
+);
+
+-- Crear tabla ReportesVentas
+CREATE TABLE ReportesVentas (
+    ReporteID INT PRIMARY KEY IDENTITY(1,1),
+    Fecha DATETIME DEFAULT GETDATE(),
+    Tipo VARCHAR(50) NOT NULL,
+    TotalVentas DECIMAL(10, 2) NOT NULL,
+    CantidadVentas INT NOT NULL,
+    ClienteID INT FOREIGN KEY REFERENCES Clientes(ClienteID)
+);
+</pre>
+
+<h1>Inserción de Registros - Florisoft</h1>
+<pre>
+-- Insertar registros en la tabla Clientes
+INSERT INTO Clientes (Nombre, Correo, Telefono, Direccion, RFC, RegimenFiscal)
+VALUES 
+('Juan Pérez', 'juan.perez@example.com', '5551234567', 'Calle Falsa 123', 'RFC123456789', 'Régimen General'),
+('María Gómez', 'maria.gomez@example.com', '5552345678', 'Calle Verdadera 456', 'RFC987654321', 'Régimen Simplificado'),
+('Pedro López', 'pedro.lopez@example.com', '5553456789', 'Avenida Siempre Viva 789', 'RFC123987654', 'Régimen General'),
+('Ana Torres', 'ana.torres@example.com', '5554567890', 'Boulevard de la Vida 321', 'RFC456123789', 'Régimen General'),
+('Luis Fernández', 'luis.fernandez@example.com', '5555678901', 'Calle de la Paz 654', 'RFC321654987', 'Régimen General'),
+('Lucía Martínez', 'lucia.martinez@example.com', '5556789012', 'Calle del Sol 987', 'RFC789456123', 'Régimen Simplificado'),
+('Carlos Ruiz', 'carlos.ruiz@example.com', '5557890123', 'Calle Luna 159', 'RFC159753486', 'Régimen General'),
+('Sofía Jiménez', 'sofia.jimenez@example.com', '5558901234', 'Calle Estrella 753', 'RFC753159258', 'Régimen General'),
+('Diego Morales', 'diego.morales@example.com', '5559012345', 'Calle Nube 258', 'RFC852456963', 'Régimen Simplificado'),
+('Valeria Castro', 'valeria.castro@example.com', '5550123456', 'Calle Mar 147', 'RFC456789123', 'Régimen General');
+
+-- Insertar registros en la tabla Pagos
+INSERT INTO Pagos (ClienteID, MetodoPago, Estado, Comprobante)
+VALUES 
+(1, 'Tarjeta', 'Aprobado', ''),
+(2, 'Transferencia', 'Aprobado', 'comprobante_transferencia_1.png'),
+(3, 'Tarjeta', 'Pendiente', ''),
+(4, 'Transferencia', 'Aprobado', 'comprobante_transferencia_2.png'),
+(5, 'Tarjeta', 'Fallido', ''),
+(6, 'Transferencia', 'Pendiente', 'comprobante_transferencia_3.png'),
+(7, 'Tarjeta', 'Aprobado', ''),
+(8, 'Transferencia', 'Aprobado', 'comprobante_transferencia_4.png'),
+(9, 'Tarjeta', 'Pendiente', ''),
+(10, 'Transferencia', 'Aprobado', 'comprobante_transferencia_5.png');
+
+-- Insertar registros en la tabla ReportesVentas
+INSERT INTO ReportesVentas (Fecha, Tipo, TotalVentas, CantidadVentas, ClienteID)
+VALUES 
+(GETDATE(), 'Diario', 520.75, 3, 1),
+(GETDATE(), 'Semanal', 1200.50, 10, 2),
+(GETDATE(), 'Mensual', 3500.00, 15, 3),
+(GETDATE(), 'Trimestral', 8500.25, 25, 4),
+(GETDATE(), 'Anual', 30000.00, 150, 5),
+(GETDATE(), 'Personalizado', 750.00, 5, 6),
+(GETDATE(), 'Diario', 430.00, 4, 7),
+(GETDATE(), 'Semanal', 900.00, 8, 8),
+(GETDATE(), 'Mensual', 2500.00, 20, 9),
+(GETDATE(), 'Trimestral', 7000.00, 35, 10);
+</pre>
+
+</body>
+</html>
+
+
+
