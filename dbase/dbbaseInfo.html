@@ -5,8 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arquitectura de la Base de Datos - Florisoft</title>
 <body>
+    <ul>
+        <li><a href="./../ventas.html">[Principal]</a></li>
+    </ul>
+    
+<h1>Diseño de la Base de Datos del Subsistema de Inventario</h1>
 
-<h1>Arquitectura de la Base de Datos - Florisoft</h1>
+<h1>Descripción de la Arquitectura de la Base de Datos</h1>
 <p>La base de datos <strong>Florisoft</strong> está diseñada para gestionar la información relacionada con clientes, pagos y reportes de ventas, garantizando la organización y consistencia de los datos. Contiene las siguientes tablas:</p>
 
 <h2>Clientes</h2>
@@ -43,7 +48,7 @@
     <li><strong>ClienteID:</strong> Identificador del cliente relacionado con el reporte.</li>
 </ul>
 
-<h1>Normalización de la Base de Datos - Florisoft</h1>
+<h1>Normalización de la Base de Datos</h1>
 <p>La base de datos ha sido diseñada siguiendo las primeras tres formas normales (1NF, 2NF, 3NF) para garantizar la organización y consistencia de los datos:</p>
 
 <h2>1NF (Primera Forma Normal)</h2>
@@ -55,7 +60,7 @@
 <h2>3NF (Tercera Forma Normal)</h2>
 <p>No hay dependencias transitivas; todos los atributos son dependientes directamente de la clave primaria.</p>
 
-<h1>Creación de Tablas - Florisoft</h1>
+<h1>Código SQL para Crear Tablas</h1>
 
 <pre>
 -- Crear tabla Clientes
@@ -90,7 +95,7 @@ CREATE TABLE ReportesVentas (
 );
 </pre>
 
-<h1>Inserción de Registros - Florisoft</h1>
+<h1>Código SQL para Agregar Registros</h1>
 <pre>
 -- Insertar registros en la tabla Clientes
 INSERT INTO Clientes (Nombre, Correo, Telefono, Direccion, RFC, RegimenFiscal)
