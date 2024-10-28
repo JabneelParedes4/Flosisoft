@@ -39,13 +39,17 @@
 <h2>Normalización de la Base de Datos</h2>
 <p>La base de datos ha sido estructurada de acuerdo con las primeras tres formas normales (1NF, 2NF, 3NF) para asegurar la correcta organización y coherencia de la información:</p>
 <h3>1NF (Primera Forma Normal)</h3>
-<p>Cada tabla cuenta con una clave primaria exclusiva y todos los registros son atómicos, lo que implica que cada campo contiene un único valor.</p>
+<p>Todos los atributos en cada tabla contienen valores atómicos. Por ejemplo, en la tabla Clientes, los datos de cada cliente (nombre, correo electrónico, teléfono) se almacenan en campos individuales, 
+    garantizando que cada campo contenga un único valor. Esto asegura que no hay listas ni conjuntos dentro de los campos, manteniendo la integridad de los datos.</p>
 
 <h3>2NF (Segunda Forma Normal)</h3>
-<p>Se han eliminado las dependencias parciales, asegurando que todos los atributos dependan completamente de la clave primaria, lo que evita redundancias.</p>
+<p> Cada atributo no clave depende completamente de la clave primaria de su tabla. En la tabla Pagos, todos los detalles del pago, como el método de pago, estado y comprobante, dependen del identificador 
+    único del pago (PagoID). Esto evita dependencias parciales y asegura que cada campo contribuya directamente a describir el registro.</p>
 
 <h3>3NF (Tercera Forma Normal)</h3>
-<p>No hay dependencias transitivas; cada atributo está directamente relacionado con la clave primaria, lo que mejora la integridad de los datos.</p>
+<p>No existen dependencias transitivas en ninguna de las tablas. Por ejemplo, en la tabla ReportesVentas, todos los atributos dependen directamente de la clave primaria (ReporteID), y no 
+    hay atributos no clave que dependen de otros atributos no clave. Además, los datos del cliente y del pago están separados, lo que evita duplicación y mantiene la consistencia, asegurando que un reporte de ventas esté 
+    relacionado con un cliente a través de la clave foránea (ClienteID).</p>
 
 <h2>Código SQL para Crear Tablas</h2>
 
